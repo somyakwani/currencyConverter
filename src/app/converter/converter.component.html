@@ -1,0 +1,32 @@
+<div class="converter">
+    <h2>Currency Converter</h2>
+  
+    <div>
+      <label for="fromCurrency">From:</label>
+      <select id="fromCurrency" [(ngModel)]="fromCurrency">
+        <option *ngFor="let currency of (rates | keyvalue)" [value]="currency.key">
+          {{currency.key}}
+        </option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="toCurrency">To:</label>
+      <select id="toCurrency" [(ngModel)]="toCurrency">
+        <option *ngFor="let currency of (rates | keyvalue)" [value]="currency.key">
+          {{currency.key}}
+        </option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" [(ngModel)]="amount">
+    </div>
+  
+    <button (click)="convert()">Convert</button>
+  
+    <div *ngIf="result !== null">
+      <h3>Result: {{amount}} {{fromCurrency}} = {{result | number:'1.2-2'}} {{toCurrency}}</h3>
+    </div>
+  </div>
